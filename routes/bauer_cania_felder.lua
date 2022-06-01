@@ -7,6 +7,31 @@ MAX_MONSTERS = 1
 
 MAX_PODS = 95
 
+function hiboux()
+	global:clickPosition(408, 228, false)
+	global:delay(1000)
+	global:clickPosition(300, 383, false)
+	storage:putAllItems()
+	global:leaveDialog()
+end
+
+function tryHavenbag()
+	global.sendKey(72) -- H key
+	
+	global.delay(5000)
+	
+	-- After the delay, if the script read here, it might be
+	-- because the havenbag is not accessible.
+	global.printMessage("[AVERTISSEMENT] Havre-sac inaccessible sur la carte [" .. map.currentPos() .. "].")
+	
+	-- So let's continue our work...
+	return move()
+end
+
+function wait()
+    map:waitMovementFinish(5000)
+end
+
 function move()
 	return {
 		{map = "-27,-36", changeMap = "left"},
@@ -43,20 +68,13 @@ end
 
 function bank()
 	return {
+		{ map = "0,0", changeMap = "zaap(121,217,191105026)" },
+		{ map = "5,-18", changeMap = "left" },
+		{ map = "191104002", changeMap = "247" },
+		{ map = "192415750", custom = hiboux, havenbag = true },
+		{ map = map.currentMapId(), changeMap = "zaap(121,217,142087694)" },
 	}
 	end
-
-function emptyInventory()
-    npc:npcBank(-1,-1)
-    global:delay(2500)
-    storage:putAllItems()
-    global:leaveDialog()
-end
-
-function wait()
-    map:waitMovementFinish(5000)
-end
-
 
 function phenix()
 	return {
