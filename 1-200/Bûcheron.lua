@@ -1143,7 +1143,6 @@ end
 
 function bank()
     return {
-        checkBag(),
         {map = "0,0", custom = astrub}, 
 		{map = "5,-18", changeMap = "left"},
         {map = "191104002", changeMap = "261"},
@@ -1151,7 +1150,7 @@ function bank()
     }
 end
 
-function lost() 
+function lost()
 	havresac() 
 end
 

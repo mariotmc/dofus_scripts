@@ -1,11 +1,15 @@
 -- lvl 140
--- Malt, Seigle, Chanvre
+-- Malt, Seigle, Chanvre, Lin
 
-ELEMENTS_TO_GATHER = {47, 44, 46}
+ELEMENTS_TO_GATHER = {47, 44, 46, 42}
 
 MAX_MONSTERS = 1
 
 MAX_PODS = 95
+
+routen_zaap = "zaap(121,217,142087694)"
+
+bank_zaap = "zaap(121,217,191105026)"
 
 function hiboux()
 	global:clickPosition(408, 228, false)
@@ -13,19 +17,13 @@ function hiboux()
 	global:clickPosition(300, 383, false)
 	storage:putAllItems()
 	global:leaveDialog()
+	global:delay(2000)
 end
 
-function tryHavenbag()
-	global.sendKey(72) -- H key
-	
-	global.delay(5000)
-	
-	-- After the delay, if the script read here, it might be
-	-- because the havenbag is not accessible.
-	global.printMessage("[AVERTISSEMENT] Havre-sac inaccessible sur la carte [" .. map.currentPos() .. "].")
-	
-	-- So let's continue our work...
-	return move()
+function enterHavenbag()
+	global:delay(2500)
+    global:sendKey(72)
+    global:delay(2500)
 end
 
 function wait()
@@ -34,6 +32,7 @@ end
 
 function move()
 	return {
+		{map = "0,0", changeMap = routen_zaap},
 		{map = "-27,-36", changeMap = "left"},
 		{map = "-28,-36", changeMap = "left"},
 		{map = "-29,-36", changeMap = "left"},
@@ -68,13 +67,12 @@ end
 
 function bank()
 	return {
-		{ map = "0,0", changeMap = "zaap(121,217,191105026)" },
+		{ map = "0,0", changeMap = bank_zaap },
 		{ map = "5,-18", changeMap = "left" },
 		{ map = "191104002", changeMap = "247" },
-		{ map = "192415750", custom = hiboux, havenbag = true },
-		{ map = map.currentMapId(), changeMap = "zaap(121,217,142087694)" },
-	}
-	end
+		{ map = "192415750", custom = hiboux},
+	}	
+end
 
 function phenix()
 	return {
@@ -83,5 +81,6 @@ end
 
 function lost()
 	return {
+		enterHavenbag()
 	}
 end

@@ -95,7 +95,7 @@ stepList = {
 			"Arak",
 			"Imale",
 			"Pandala",
-			"Himum",
+			-- "Himum",
 			"Sakai",
 			"Maksage",
 			"Hissoire",
@@ -832,23 +832,23 @@ mines = {
             { map = "207620108", gather = true, custom = nextMine },
 		})
 	end,
-	["Himum"] = function()
-		return MULTIPLE_MAP:Run({
-			{ map = "0,0", changeMap = "zaap(110,190,173278210)" },-- Zaap saharach
-			{ map = "173278210", changeMap = "top" },
-            { map = "173278209", changeMap = "top" },
-            { map = "173278208", changeMap = "right" },
-            { map = "173278720", changeMap = "147" },
-            { map = "173935364", gather = true, changeMap = "297" },
-            { map = "173936388", gather = true, changeMap = "464" },
-            { map = "173937412", gather = true, changeMap = "382" },
-            { map = "173938436", gather = true, changeMap = "367" },
-            { map = "173939460", gather = true, changeMap = "432" },
-            { map = "173938436", gather = true, changeMap = "291" },
-            { map = "173937412", gather = true, changeMap = "264" },
-            { map = "173936388", gather = true, changeMap = "389", custom = nextMine },
-		})
-	end,
+	-- ["Himum"] = function()
+	-- 	return MULTIPLE_MAP:Run({
+	-- 		{ map = "0,0", changeMap = "zaap(110,190,173278210)" },-- Zaap saharach
+	-- 		{ map = "173278210", changeMap = "top" },
+    --         { map = "173278209", changeMap = "top" },
+    --         { map = "173278208", changeMap = "right" },
+    --         { map = "173278720", changeMap = "147" },
+    --         { map = "173935364", gather = true, changeMap = "297" },
+    --         { map = "173936388", gather = true, changeMap = "464" },
+    --         { map = "173937412", gather = true, changeMap = "382" },
+    --         { map = "173938436", gather = true, changeMap = "367" },
+    --         { map = "173939460", gather = true, changeMap = "432" },
+    --         { map = "173938436", gather = true, changeMap = "291" },
+    --         { map = "173937412", gather = true, changeMap = "264" },
+    --         { map = "173936388", gather = true, changeMap = "389", custom = nextMine },
+	-- 	})
+	-- end,
 	["Sakai"] = function()
 		idTransporteur = "sakai"
 		return MULTIPLE_MAP:Run({

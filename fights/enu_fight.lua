@@ -1,6 +1,6 @@
 -- IA
 
-DofusClass="6"
+DofusClass="3"
 
 
 function Main()
@@ -14,10 +14,10 @@ function MoveAggressive()
         fight:moveToWardCell(fight:getNearestEnemy())
         if (fighter:isHandToHand())
         then
-            fight:launchSpellInCell(fight:getNearestEnemy(), 12848)
+            fight:launchSpellInCell(fight:getNearestEnemy(), "Lancer de Pelle")
         end
     else
-        fight:launchSpellInCell(fight:getNearestEnemy(), 12848)
-        fight:launchSpellInCell(fight:getNearestEnemy(), 12848)
+        fight:launchSpellInCell(fight:getNearestEnemy(), "Lancer de Pelle")
+        fight:launchSpellInCell(fight:getNearestEnemy(), "Eboulement")
     end
 end

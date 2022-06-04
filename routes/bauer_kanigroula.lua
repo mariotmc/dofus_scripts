@@ -7,8 +7,32 @@ MAX_MONSTERS = 1
 
 MAX_PODS = 95
 
+routen_zaap = "zaap(121,217,156240386)"
+
+bank_zaap = "zaap(121,217,191105026)"
+
+function hiboux()
+	global:clickPosition(408, 228, false)
+	global:delay(1000)
+	global:clickPosition(300, 383, false)
+	storage:putAllItems()
+	global:leaveDialog()
+	global:delay(2000)
+end
+
+function enterHavenbag()
+	global:delay(2500)
+    global:sendKey(72)
+    global:delay(2500)
+end
+
+function wait()
+    map:waitMovementFinish(5000)
+end
+
 function move()
 	return {
+		{map = "0,0", changeMap = routen_zaap},
 		{map = "-3,-42", changeMap = "right"},
 		{map = "-2,-42", changeMap = "top"},
 		{map = "-2,-43", changeMap = "top"},
@@ -63,21 +87,12 @@ end
 
 function bank()
 	return {
-
+		{map = "0,0", changeMap = bank_zaap},
+		{ map = "5,-18", changeMap = "left" },
+		{ map = "191104002", changeMap = "247" },
+		{ map = "192415750", custom = hiboux},
 	}
 	end
-
-function emptyInventory()
-    npc:npcBank(-1,-1)
-    global:delay(2500)
-    storage:putAllItems()
-    global:leaveDialog()
-end
-
-function wait()
-    map:waitMovementFinish(5000)
-end
-
 
 function phenix()
 	return {
@@ -86,5 +101,6 @@ end
 
 function lost()
 	return {
+		enterHavenbag()
 	}
 end

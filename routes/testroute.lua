@@ -7,30 +7,7 @@ MAX_MONSTERS = 1
 
 MAX_PODS = 95
 
-direction = "left"
-
-function move()
-    -- variable to determine position change on overlap
-    -- if/else statement to determine direction on overlap
-
-	return {
-        -- {map = "-27,-36", changeMap = direction},
-		-- {map = "-28,-36", changeMap = "top"},
-		-- {map = "-28,-37", changeMap = "right"},
-		-- {map = "-27,-37", changeMap = "bottom"},
-		-- {map = "-27,-36", changeMap = direction},
-		{map = "8,-23", changeMap = direction, custom = handleDirectionChange},
-		{map = "7,-23", changeMap = "bottom"},
-		{map = "7,-22", changeMap = "right"},
-		{map = "8,-22", changeMap = "top"},
-		{map = "8,-23", changeMap = direction, custom = handleDirectionChange},
-	}
-end
-
-function bank()
-	return {
-	}
-end
+direction = "right"
 
 function emptyInventory()
     npc:npcBank(-1,-1)
@@ -43,17 +20,100 @@ function wait()
     map:waitMovementFinish(5000)
 end
 
-function phenix()
+function changeDirection()
+	if direction == "right" then
+		direction = "left"
+	else
+		direction = "right"
+	end
+end
+
+function changeLeftToTop()
+	if direction == "left" then
+		direction = "top"
+	end
+end
+
+function changeRightToTop()
+	if direction == "right" then
+		direction = "top"
+	end
+end
+
+function changeBottomToTop()
+	if direction == "bottom" then
+		direction = "top"
+	end
+end
+
+function changeLeftToBottom()
+	if direction == "left" then
+		direction = "bottom"
+	end
+end
+
+function changeRightToBottom()
+	if direction == "right" then
+		direction = "bottom"
+	end
+end
+
+function changeTopToBottom()
+	if direction == "top" then
+		direction = "bottom"
+	end
+end
+
+function changeTopToLeft()
+	if direction == "top" then
+		direction = "left"
+	end
+end
+
+function changeRightToLeft()
+	if direction == "right" then
+		direction = "left"
+	end
+end
+
+function changeBottomToLeft()
+	if direction == "bottom" then
+		direction = "left"
+	end
+end
+
+function changeTopToRight()
+	if direction == "top" then
+		direction = "right"
+	end
+end
+
+function changeLeftToRight()
+	if direction == "left" then
+		direction = "right"
+	end
+end
+
+function changeBottomToRight()
+	if direction == "bottom" then
+		direction = "right"
+	end
+end
+
+function move()
+	return {
+		{map = "5,-18", changeMap = "bottom"},
+		{map = "5,-19", changeMap = "top"},
+		{map = "5,-18", changeMap = "right"},
+	}
+end
+
+function bank()
 	return {
 	}
 end
 
-function handleDirectionChange()
-	if direction == "left"
-	then
-		return direction = "right"
-
-	if direction == "right"
-	then
-		return direction = "left"
+function phenix()
+	return {
+	}
 end
