@@ -1,4 +1,4 @@
-MAX_PODS = 90
+MAX_PODS = 95
 
 function astrub()
     global:delay(2500)
@@ -62,6 +62,12 @@ end
 function descendre()
     global:delay(2500)
     global:clickPosition(524, 463)
+end
+
+function enterHavenbag()
+	global:delay(2500)
+    global:sendKey(72)
+    global:delay(2500)
 end
 
 function move()
@@ -1143,15 +1149,17 @@ end
 
 function bank()
     return {
-        {map = "0,0", custom = astrub}, 
-		{map = "5,-18", changeMap = "left"},
-        {map = "191104002", changeMap = "261"},
-        {map = "192415750", custom = hiboux, changeMap = "424"}
+        { map = "0,0", changeMap = "zaap(121,217,191105026)" },
+		{ map = "5,-18", changeMap = "left" },
+		{ map = "191104002", changeMap = "247" },
+		{ map = "192415750", custom = hiboux},
     }
 end
 
 function lost()
-	havresac() 
+	return {
+		enterHavenbag()
+	}
 end
 
 function phenix() 

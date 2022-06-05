@@ -64,7 +64,7 @@ stepList = {
 			"Arak",
 			"Imale",
 			-- "Pandala",
-			-- "Himum",
+			"Himum",
 			--"Sakai",
 			--"Maksage",
 			--"Hissoire",
@@ -94,8 +94,8 @@ stepList = {
 			"Bwork",
 			"Arak",
 			"Imale",
-			"Pandala",
-			-- "Himum",
+			-- "Pandala",
+			"Himum",
 			"Sakai",
 			"Maksage",
 			"Hissoire",
@@ -132,16 +132,22 @@ ELEMENTS_TO_GATHER = {
 	293 -- Écume de mer
 }
 function hiboux()
-global:clickPosition(408, 228, false)
-global:delay(1000)
-global:clickPosition(300, 383, false)
-global:delay(500)
-storage:putAllItems()
-global:delay(500)
-global:leaveDialog()
-global:delay(500)
-
+	global:clickPosition(408, 228, false)
+	global:delay(1000)
+	global:clickPosition(300, 383, false)
+	global:delay(500)
+	storage:putAllItems()
+	global:delay(500)
+	global:leaveDialog()
+	global:delay(500)
 end
+
+function enterHavenbag()
+	global:delay(2500)
+    global:sendKey(72)
+    global:delay(2500)
+end
+
 function move()
 	if not currentStep then
 		updateCurrentStep()
@@ -167,8 +173,7 @@ function bank()
 		{ map = "0,0", changeMap = "zaap(121,217,191105026)" },
 		{ map = "5,-18", changeMap = "left" },
 		{ map = "191104002", changeMap = "247" },
-		{ map = "192415750", custom = hiboux, havenbag = true },
-		{ map = map.currentMapId(), custom = tryHavenbag },
+		{ map = "192415750", custom = hiboux},
 	}
 	
 end
@@ -178,9 +183,8 @@ function phenix()
 end
 
 function lost()
-	global.printMessage("[AVERTISSEMENT] Personnage perdu sur la carte [" .. map.currentPos() .. "].")
 	return {
-		{ map = map.currentMapId(), havenbag = true },
+		enterHavenbag()
 	}
 end
 
@@ -832,23 +836,23 @@ mines = {
             { map = "207620108", gather = true, custom = nextMine },
 		})
 	end,
-	-- ["Himum"] = function()
-	-- 	return MULTIPLE_MAP:Run({
-	-- 		{ map = "0,0", changeMap = "zaap(110,190,173278210)" },-- Zaap saharach
-	-- 		{ map = "173278210", changeMap = "top" },
-    --         { map = "173278209", changeMap = "top" },
-    --         { map = "173278208", changeMap = "right" },
-    --         { map = "173278720", changeMap = "147" },
-    --         { map = "173935364", gather = true, changeMap = "297" },
-    --         { map = "173936388", gather = true, changeMap = "464" },
-    --         { map = "173937412", gather = true, changeMap = "382" },
-    --         { map = "173938436", gather = true, changeMap = "367" },
-    --         { map = "173939460", gather = true, changeMap = "432" },
-    --         { map = "173938436", gather = true, changeMap = "291" },
-    --         { map = "173937412", gather = true, changeMap = "264" },
-    --         { map = "173936388", gather = true, changeMap = "389", custom = nextMine },
-	-- 	})
-	-- end,
+	["Himum"] = function()
+		return MULTIPLE_MAP:Run({
+			{ map = "0,0", changeMap = "zaap(110,190,173278210)" },-- Zaap saharach
+			{ map = "173278210", changeMap = "top" },
+            { map = "173278209", changeMap = "top" },
+            { map = "173278208", changeMap = "right" },
+            { map = "173278720", changeMap = "147" },
+            { map = "173935364", gather = true, changeMap = "297" },
+            { map = "173936388", gather = true, changeMap = "464" },
+            { map = "173937412", gather = true, changeMap = "382" },
+            { map = "173938436", gather = true, changeMap = "367" },
+            { map = "173939460", gather = true, changeMap = "432" },
+            { map = "173938436", gather = true, changeMap = "291" },
+            { map = "173937412", gather = true, changeMap = "264" },
+            { map = "173936388", gather = true, changeMap = "389", custom = nextMine },
+		})
+	end,
 	["Sakai"] = function()
 		idTransporteur = "sakai"
 		return MULTIPLE_MAP:Run({

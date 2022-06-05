@@ -11,6 +11,8 @@ bank_zaap = "zaap(121,217,191105026)"
 
 lastActionId = 0
 
+lost = false
+
 function updateLastActionId()
 	lastActionId = map:currentMapId()
 end
@@ -29,29 +31,53 @@ function enterHavenbag()
     global:delay(2500)
 end
 
+function returnToStart()
+	return {
+		{map = "0,0", changeMap = routen_zaap},
+		{map = "-78,-41",  custom = updateLastActionId},
+	}
+end
+
 function enterBank()
     global:clickPosition(300, 383)
 end
 
 function travelToWal()
-	global:clickPosition(403, 250)
 	global:delay(1000)
-	global:clickPosition(308, 398)
+	global:clickPosition(402, 252)
+	global:delay(1000)
+	global:clickPosition(298, 393)
+	global:delay(1000)
+	global:clickPosition(325, 398)
 	global:delay(1000)
 end
 
 function travelToFrigost()
-	global:clickPosition(426, 302)
 	global:delay(1000)
-	global:clickPosition(304, 396)
+	global:clickPosition(425, 305)
+	global:delay(1000)
+	global:clickPosition(325, 395)
 	global:delay(1000)
 end
 
+function toggleLost()
+	if lost == true then
+		lost = false
+	else
+		lost = true
+	end
+end
+
+function gatherWalDungeonFish()
+	global:clickPosition(628, 277)
+	global:delay(3000)
+end
+
 function move()
-	if not lastActionId == 0 or lastActionId == 54172969 then
+	if lost == true then
 		return {
 			{map = "0,0", changeMap = routen_zaap},
-			{map = "-78,-41", gather = true,  custom = updateLastActionId},
+			{map = "-78,-41", custom = updateLastActionId, custom = toggleLost, changeMap = "left"}
 		}
 	elseif lastActionId == 0 or lastActionId == 54172969 then
 		return {
@@ -61,11 +87,10 @@ function move()
 			{map = "-81,-41", changeMap = "left", gather = true},
 			{map = "-82,-41", changeMap = "bottom", gather = true},
 			{map = "-82,-40", changeMap = "bottom", gather = true},
-			{map = "-82,-39", gather = true, custom = updateLastActionId},
+			{map = "-82,-39", custom = updateLastActionId, changeMap = "top", gather = true, },
 		}
 	elseif lastActionId == 54175015 then
 		return {
-			{map = "-82,-39", changeMap = "top", gather = true},
 			{map = "-82,-40", changeMap = "top", gather = true},
 			{map = "-82,-41", changeMap = "left", gather = true},
 			{map = "-83,-41", changeMap = "left", gather = true},
@@ -75,11 +100,10 @@ function move()
 			{map = "-83,-58", changeMap = "top", gather = true},
 			{map = "-83,-59", changeMap = "left", gather = true},
 			{map = "-84,-59", changeMap = "left", gather = true},
-			{map = "-85,-59", gather = true, custom = updateLastActionId},
+			{map = "-85,-59", custom = updateLastActionId, changeMap = "right", gather = true },
 		}
 	elseif lastActionId == 140641537 then
 		return {
-			{map = "-85,-59", changeMap = "right", gather = true},
 			{map = "-84,-59", changeMap = "right", gather = true},
 			{map = "-83,-59", changeMap = "bottom", gather = true},
 			-- hier mit dem schiff nach frigost fahren
@@ -102,8 +126,8 @@ function move()
 			{ map = "-76,-46", changeMap = "top", gather = true }, 
 			{ map = "-76,-47", changeMap = "top", gather = true }, 
 			{ map = "-76,-48", changeMap = "top", gather = true }, 
-			{ map = "-76,-49", changeMap = "top", gather = true }, 
-			{ map = "-76,-50", changeMap = "right", gather = true }, 
+			{ map = "-76,-49", changeMap = "right", gather = true }, 
+			{ map = "-75,-49", changeMap = "top", gather = true }, 
 			{ map = "-75,-50", changeMap = "right", gather = true }, 
 			{ map = "-74,-50", changeMap = "right", gather = true }, 
 			{ map = "-73,-50", changeMap = "right", gather = true }, 
@@ -190,7 +214,7 @@ function move()
 			{ map = "-79,-39", changeMap = "top", gather = true }, 
 			{ map = "-79,-40", changeMap = "right", gather = true }, 
 			{ map = "-78,-40", changeMap = "top", gather = true },
-			{map = "-78,-41", gather = true, custom = updateLastActionId},
+			{map = "-78,-41", custom = updateLastActionId, changeMap = "left", gather = true, },
 		}
 	end
 end
@@ -211,6 +235,7 @@ end
 
 function lost()
 	return {
+		toggleLost(),
         enterHavenbag()
 	}
 end
