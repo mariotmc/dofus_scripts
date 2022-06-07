@@ -1,7 +1,7 @@
 -- lvl 200
 -- Or, Dolomite, Obsidienne
 
-ELEMENTS_TO_GATHER = {43, 113, 135}
+ELEMENTS_TO_GATHER = {25, 113, 135}
 
 MAX_PODS = 95
 
@@ -18,20 +18,19 @@ function hiboux()
 end
 
 function enterHavenbag()
-	global:delay(2500)
+	global:delay(1500)
     global:sendKey(72)
-    global:delay(2500)
-end
-
-function enterMine()
-	global:clickPosition()
-	global:delay(1000)
-	global:clickPosition()
-	global:delay(1000)
+    global:delay(1500)
 end
 
 function wait()
-    global:delay(600000)
+    -- global:delay(600000)
+    global:delay(3000)
+end
+
+function gatherMap()
+	gather()
+	global:delay(5000)
 end
 
 function move()
@@ -54,17 +53,17 @@ function move()
         { map = "-71,-71", changeMap = "right" },
         { map = "-70,-71", changeMap = "right" },
         { map = "-68,-71", changeMap = "right" },
-        { map = "-69,-71", changeMap = "" }, -- click
+        { map = "-69,-71", changeMap = "262" }, -- click
         { map = "-67,-71", changeMap = "bottom" },
         { map = "-67,-70", changeMap = "right" },
-        { map = "-66,-70", changeMap = "" }, -- click
+        { map = "-66,-70", changeMap = "399" }, -- click
         { map = "-66,-69", changeMap = "right" },
         { map = "-65,-69", changeMap = "bottom" },
-        { map = "-65,-68", gather = true, changeMap = "right" },
-        { map = "194777094", gather = true, changeMap = "" }, -- click into mine
-        { map = "194777096", gather = true, custom = wait }, -- delay
-        { map = "194777096", gather = true, changeMap = "" }, -- click out of mine
-        { map = "194777094", gather = true, changeMap = "left" }, -- outside of mine
+        { map = "-65,-68", custom = wait, gather = true, changeMap = "right" },
+        { map = "194777094", custom = wait, gather = true, changeMap = "210" }, -- click into mine
+        { map = "194777096", custom = wait, gather = true, custom = wait }, -- delay
+        { map = "194777096", custom = wait, gather = true, changeMap = "402" }, -- click out of mine
+        { map = "194777094", custom = wait, gather = true, changeMap = "left" }, -- outside of mine
     })
 end
 
@@ -75,7 +74,7 @@ function bank()
 		{ map = "191104002", changeMap = "247" },
 		{ map = "192415750", custom = hiboux},
 	})
-	end
+end
 
 function phenix()
 	return {}
