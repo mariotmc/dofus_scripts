@@ -3,8 +3,6 @@
 
 ELEMENTS_TO_GATHER = {259, 29, 30, 32, 133, 134}
 
-MAX_MONSTERS = 1
-
 MAX_PODS = 95
 
 routen_zaap = "zaap(121,217,54172969)"
@@ -195,11 +193,10 @@ function bank()
 		{ map = "191104002", changeMap = "247" },
 		{ map = "192415750", custom = hiboux},
 	}
-	end
+end
 
 function phenix()
-	return {
-	}
+	return {}
 end
 
 function lost()
