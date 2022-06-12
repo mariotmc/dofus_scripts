@@ -14,11 +14,12 @@ function MoveAggressive()
         fight:moveToWardCell(fight:getNearestEnemy())
         if (fighter:isHandToHand())
         then
-            fight:launchSpellInCell(fight:getNearestEnemy(), "Eviction")
+            fight:launchSpellInCell(fight:getNearestEnemy(), 12794)
+            fight:launchSpellInCell(fight:getNearestEnemy(), 12794)
         end
     else
-        fight:launchSpellInCell(fight:getNearestEnemy(), "Eviction")
-        fight:launchSpellInCell(fight:getNearestEnemy(), "Eviction")
+        fight:launchSpellInCell(fight:getNearestEnemy(), 12794)
+        fight:launchSpellInCell(fight:getNearestEnemy(), 12794)
     end
 end
 

@@ -9,12 +9,33 @@ routen_zaap = "zaap(121,217,88082704)"
 
 bank_zaap = "zaap(121,217,191105026)"
 
+function pickUpPotion()
+    global:delay(1000)
+	global:sendKey(68)
+	global:delay(1000)
+	global:clickPosition(538,428)
+	global:delay(1000)
+	global:clickPosition(34,112)
+	global:clickPosition(34,112)
+	global:delay(1000)
+	global:clickPosition(630,52)
+	global:delay(1000)
+	global:clickPosition(625,94)
+    global:delay(1000)
+end
+
+function usePotion()
+    global:clickPosition(270,481)
+    global:clickPosition(270,481)
+end
+
 function hiboux()
 	global:clickPosition(384, 234)
 	global:delay(1000)
 	global:clickPosition(300, 383)
 	storage:putAllItems()
 	global:leaveDialog()
+    pickUpPotion()
 end
 
 function enterHavenbag()
@@ -162,7 +183,7 @@ function move()
         { map = "54158637", changeMap = "left" },
         { map = "-66,-39", changeMap = "right" }, 
         { map = "-51,-45", changeMap = "bottom" }, 
-        { map = "-51,-44", changeMap = "left" }, 
+        { map = "54159148", changeMap = "left" }, 
         { map = "-52,-44", changeMap = "left" }, 
         { map = "-53,-44", changeMap = "bottom" }, 
         { map = "-53,-43", changeMap = "bottom" }, 
@@ -206,7 +227,13 @@ function phenix()
 end
 
 function lost()
-    enterHavenbag()
+    if inventory:podsP() >= 95 then 
+        usePotion()
+        global:delay(1000)
+        enterHavenbag()
+    else
+        enterHavenbag()
+    end
 end
 
 --[[---------------------------------------------------------

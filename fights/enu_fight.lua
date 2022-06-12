@@ -9,15 +9,14 @@ function Main()
 end
 
 function MoveAggressive()
-    if (not(fighter:isHandToHand()))
-    then
+    if (not(fighter:isHandToHand())) then
         fight:moveToWardCell(fight:getNearestEnemy())
-        if (fighter:isHandToHand())
-        then
-            fight:launchSpellInCell(fight:getNearestEnemy(), "Lancer de Pelle")
+        if (fighter:isHandToHand()) then
+            fight:launchSpellInCell(fight:getNearestEnemy(), 13360)
+            fight:launchSpellInCell(fight:getNearestEnemy(), 13370)
         end
     else
-        fight:launchSpellInCell(fight:getNearestEnemy(), "Lancer de Pelle")
-        fight:launchSpellInCell(fight:getNearestEnemy(), "Eboulement")
+        fight:launchSpellInCell(fight:getNearestEnemy(), 13360)
+        fight:launchSpellInCell(fight:getNearestEnemy(), 13370)
     end
 end

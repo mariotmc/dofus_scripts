@@ -2,11 +2,23 @@ ELEMENTS_TO_GATHER = {}
 
 MAX_PODS = 95
 
-delay = global:delay(2500)
+function openMountInventory()
+	global:delay(1000)
+	global:sendKey(68)
+	global:delay(1000)
+	global:clickPosition(538,428)
+	global:delay(1000)
+	global:clickPosition(34,112)
+	global:clickPosition(34,112)
+	global:delay(1000)
+	global:clickPosition(630,52)
+	global:delay(1000)
+	global:clickPosition(625,94)
+end
 
 function move()
     return MULTIPLE_MAP:Run({
-		{map = "5,-18", changeMap = "left"},
+		{map = "5,-18", custom = openMountInventory, changeMap = "left"},
 		{map = "4,-18", changeMap = "top"},
 		{map = "4,-19", changeMap = "right"},
 		{map = "5,-19", changeMap = "bottom"},

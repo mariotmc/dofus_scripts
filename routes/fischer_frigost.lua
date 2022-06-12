@@ -43,6 +43,7 @@ end
 
 function move()
 	return MULTIPLE_MAP:Run({
+		{ map = "0,0", changeMap = routen_zaap },
 		{map = "-78,-41", changeMap = "left", gather = true},
 		{map = "-79,-41", changeMap = "left", gather = true},
 		{map = "-80,-41", changeMap = "left", gather = true},
